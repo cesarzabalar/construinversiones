@@ -1,4 +1,14 @@
-
+<?php
+$recurso = $_SERVER['REQUEST_URI'];
+$separar = explode(".",$recurso);
+$separar = end($separar); 
+if($separar  == "php"){
+    $dir =substr("$recurso", 0, -4); //
+    // o mejor
+    // $dir = "404.html"; // ´lo mandas a un "not found" para que no insistan con el .php
+    header("Location: $dir");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

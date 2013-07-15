@@ -1,11 +1,4 @@
 <?php
-//session_start();
-
-/*if(!isset($_SESSION['nombre']))
-{
-	header("location:login.php");
-} else {*/
-
 
 $raiz ="./"; //distancia hasta la raiz, empieza en punto y termina en barra
 include_once("librerias/funciones-comunes.php");
@@ -20,15 +13,9 @@ if(!isset($_SESSION['nombre']))
 	header("location:login.php");
 } else {
     
-include ("clases/conexion_Mysql.php");
-
-$conexion = new Conexion_Mysql();
-$conexion->conectar();
-
 
 //Se captura el id del usuario ingresado
 $id = $_SESSION['idUsuario'];
-
 
 ?>
 <!--Encabezado-->
@@ -36,13 +23,13 @@ $id = $_SESSION['idUsuario'];
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="row-fluid">
-				<div style="margin-top:20px" class="span2">
-					<img alt="Logo construinversiones" src="" width="130px" />
+				<div style="margin-top:20px" class="span4">
+					<img alt="Logo construinversiones" src="images/LogoConstrupeq.png" width="500px" />
 				</div>
-				<div style="margin-top:20px" class="span10">
+				<div style="margin-top:20px" class="span8">
 					<div class="page-header">
 						<h1>
-							CONSTRUINVERSIONES  <br /><small>Aplicativo de Presupuestos</small>
+							APLICATIVO  <br /><small>Presupuestos</small>
 						</h1>
 					</div>
 				</div>
@@ -62,7 +49,5 @@ $id = $_SESSION['idUsuario'];
 
 <?php
     include("includes/pie.php");
-    $conexion->cerrar_conexion();
-	}
+}
  ?>
- 

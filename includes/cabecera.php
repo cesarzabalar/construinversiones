@@ -1,4 +1,16 @@
-<?php session_start();?>
+<?php 
+$recurso = $_SERVER['REQUEST_URI'];
+$separar = explode(".",$recurso);
+$separar = end($separar); 
+if($separar  == "php"){
+    $dir =substr("$recurso", 0, -4); //
+    // o mejor
+    // $dir = "404.html"; // ´lo mandas a un "not found" para que no insistan con el .php
+    header("Location: $dir");
+}
+
+
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,9 +82,9 @@
               <button type="submit" class="btn btn-warning">Ingresar</button>
             </form>
             <?php }else{ ?>
-              <div style="color:#f89406; float:right; font-size:10px; padding-top:10px">
+              <div style="color:#f89406; float:right; font-size:12px; padding-top:10px">
 				<?php echo "Bienvenido ".$_SESSION["nombre"]." ".$_SESSION["apellido"]."!!"?>
-                <a href="librerias/salir.php">Salir</a>
+                <a style="margin-left:10px; margin-top: -5px" class="btn btn-mini btn-info" href="librerias/salir.php">Salir</a>
             </div>
             <?php }?>
           </div><!--/.nav-collapse -->

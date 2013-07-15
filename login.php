@@ -13,10 +13,7 @@ $keywords ="presupuestos, constructora, normas APU";
 $titulo_pagina="Presupuestos :: Construinversiones";
 
 include("includes/cabecera2.php");
-include ("clases/Conexion_Mysql.php");
-//instanciación de la clase conexión a postgresql.
-$conexion = new Conexion_Mysql();
-$conexion->conectar();
+
 ?> 
 
 <style type="text/css">
@@ -54,6 +51,7 @@ $conexion->conectar();
     </style>
     
     <form id="frmLogin" method="post" action="librerias/procSesion.php" class="form-signin">
+        <img alt="Logo construinversiones" src="images/LogoConstrupeq.png" />
         <h2 class="form-signin-heading">Ingresar</h2>
         <label>Correo electrónico</label>
         <input type="text" name="login" class="input-block-level" placeholder="ej. usuario@constru.com">
@@ -65,6 +63,5 @@ $conexion->conectar();
 
  <?php
     include("includes/pie.php");
-    $conexion->cerrar_conexion();
 }
  ?>

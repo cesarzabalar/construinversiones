@@ -7,10 +7,7 @@ $keywords ="presupuestos, constructora, normas APU";
 $titulo_pagina="Presupuestos :: Construinversiones";
 
 include("includes/cabecera.php");
-include ("clases/Conexion_Mysql.php");
-//instanciación de la clase conexión a postgresql.
-$conexion = new Conexion_Mysql();
-$conexion->conectar();
+
 ?>  
 
       <div class="carousel slide" id="carousel-456747">
@@ -81,9 +78,5 @@ $conexion->conectar();
       <hr>
       
      <?php
-		include("includes/pie.php");
-		$conexion->cerrar_conexion();
-
-	?>
-
-      
+	include("includes/pie.php");
+    ?>

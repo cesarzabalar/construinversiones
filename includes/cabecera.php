@@ -74,23 +74,35 @@ session_start();?>
                   <li><a href="#">One more separated link</a></li>
                 </ul>
               </li>
-            </ul>
+            </ul>   
             <?php if(!isset($_SESSION['idUsuario'])){?>
+            
             <form id="frmLogin" action="librerias/procSesion.php" method="post" class="navbar-form pull-right">
               <input class="span2" name="login" type="text" placeholder="email">
               <input class="span2" name="password" type="password" placeholder="Contraseña" >
               <button type="submit" class="btn btn-warning">Ingresar</button>
             </form>
             <?php }else{ ?>
-              <div style="color:#f89406; float:right; font-size:12px; padding-top:10px">
-				<?php echo "Bienvenido ".$_SESSION["nombre"]." ".$_SESSION["apellido"]."!!"?>
-                <a style="margin-left:10px; margin-top: -5px" class="btn btn-mini btn-info" href="librerias/salir.php">Salir</a>
-            </div>
+              <ul class="nav pull-right">
+                  <div class="btn-group">
+                    <a class="btn btn-warning" href="login.php"><i class="icon-user icon-white"></i>  <?php echo $_SESSION["nombre"]." ".$_SESSION["apellido"]?></a>
+                    <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#"><i class="icon-edit"></i> Ver Perfil</a></li>
+                      <li class="divider"></li>
+                      <li><a href="librerias/salir.php"><i class="icon-off"></i> Salir</a></li>
+                    </ul>
+                  </div>
+              </ul>
             <?php }?>
+            
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
     
+      
+     
+      
    <div class="container">
 	 <div id="mensaje" title="Error de Ingreso"></div>

@@ -4,7 +4,6 @@
         <p class="muted credit">Todos los derechos reservados &copy; <?php echo date('Y');?><a href="http://construinversiones.com/"> ConstruInversiones</a>.</p>
       </div>
     </div>
-
     </div> <!-- /container -->
 
     <!-- Le javascript

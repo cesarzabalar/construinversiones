@@ -1,6 +1,6 @@
 <?php
 $raiz ="./"; //distancia hasta la raiz, empieza en punto y termina en barra
-include_once("librerias/funciones-comunes.php");
+include_once("modelo/funciones-comunes.php");
 
 $descripcion ="Portal para el aplicativo de presupuestos";
 $keywords ="presupuestos, constructora, normas APU";

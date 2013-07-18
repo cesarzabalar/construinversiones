@@ -15,7 +15,7 @@ function conecta_base_datos(){
 		echo 'error al conectar';
 		die;
 	}
-	$bd = mysql_select_db('decasamuebles');
+	$bd = mysql_select_db('construpresu');
 	if (!$bd){
 		echo 'error al seleccionar la base de datos';
 		die;

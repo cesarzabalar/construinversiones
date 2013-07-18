@@ -71,7 +71,7 @@ abstract class Conexion_Mysql {
      * Metodo encargado de realizar la conexion a la base de datos
      * @return type mysql_connect
      */
-    private function conectar(){
+    protected function conectar(){
         $this->conexion = new mysqli(self::$server, self::$user, 
 	                             self::$pass, $this->data_base);
        
@@ -82,7 +82,7 @@ abstract class Conexion_Mysql {
     /**
      * Metodo que permite el cierre de una conexion a la base de datos
      */
-    private function cerrar_conexion(){
+    protected function cerrar_conexion(){
         if($this->flag == true){
             $this->conexion->close();
         }
@@ -97,7 +97,7 @@ abstract class Conexion_Mysql {
             $this->conexion->query($this->query);
             $this->cerrar_conexion();
         } else {
-	        $this->mensaje = 'Metodo no permitido';
+	    $this->mensaje = 'Metodo no permitido';
 	}
     }
     
@@ -115,10 +115,9 @@ abstract class Conexion_Mysql {
     
     
     # Metodos abstractos para presupuesto de clases que hereden    
-    abstract protected function leer();
+    abstract protected function leer($nombreUsuario);
     abstract protected function crear();
     abstract protected function actualizar();
     abstract protected function eliminar();
-    
 }
 ?>

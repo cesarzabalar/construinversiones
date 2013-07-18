@@ -229,11 +229,11 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #F8F8F8;
 }
 
 a {
-  color: #0088cc;
+  color: #fbb450;
   text-decoration: none;
   cursor:pointer;
 }
@@ -1159,14 +1159,14 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: rgba(82, 168, 236, 0.8);
+  border-color: rgba(252, 182, 44, 0.9);
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
 
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 209, 44, 0.9);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 209, 44, 0.9);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 209, 44, 0.9);
 }
 
 input[type="radio"],
@@ -4175,8 +4175,8 @@ input[type="submit"].btn.btn-mini {
 
 .nav .dropdown-toggle .caret {
   margin-top: 6px;
-  border-top-color: #0088cc;
-  border-bottom-color: #0088cc;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
 }
 
 .nav .dropdown-toggle:hover .caret,
@@ -6602,4 +6602,10 @@ PAGINACION
 .dataTables_wrapper .dataTables_info {
   margin-top: 10px;
   margin-left:30px;
+}
+
+/***************** sticky footer ***************/
+
+.oculto{
+    display: none;
 }

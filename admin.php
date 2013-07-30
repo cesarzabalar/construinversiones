@@ -53,27 +53,24 @@ $id = $_SESSION['idUsuario'];
     <div class="tabbable tabs-left" id="tabs-217435">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="#panel-294544" data-toggle="tab">Clientes</a>
+                <a href="#panel-294544" data-toggle="tab"><i class="icon icon-user"></i> Clientes</a>
             </li>
             <li>
-		<a href="#panel-250405" data-toggle="tab">Presupuesto</a>
+		<a href="#panel-250405" data-toggle="tab"><i class="icon icon-list"></i> Presupuesto</a>
             </li>
 	</ul>
 				
         <div class="tab-content">
             <div class="tab-pane active" id="panel-294544">
-                <h3>Clientes</h3>
+                <h3 class="text-info">Clientes</h3>
                 
                 <div id="busqCliente">
                     <label>Buscar Cliente</label>
-                    <input type="text" name="buscar_cliente" id="buscar_cliente" val="" />
-                    <a id="crear_cliente" style="margin-top: -10px" class="btn btn-warning">Crear Cliente</a>
+                    <input type="search" name="buscar_cliente" id="buscar_cliente" val="" />
+                    <a id="crear_cliente" style="margin-top: -10px" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i> Crear Cliente</a>
                 </div>
                 <div id="resultados">
-                    <?php
-                        //$cliente = new class_cliente();
-                        //echo $cliente->leer('a');
-                    ?>
+                    
                 </div>
     
             </div>

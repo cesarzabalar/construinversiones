@@ -14,50 +14,27 @@ $(document).ready(function()
        select : function(event, ui){
           $('#resultados').toggle('fast', function(){
                 $('#resultados').html(
-                     '<h2>Detalles</h2>' +
-                     '<input type="hidden" id="id_usuario" value="' + ui.item.id + '" />' +
-                     '<strong>Nombre: </strong><span>' + ui.item.nombre + ' <a id="editar" class="editar btn btn-mini" href="#">Editar</a></span>' +
-                     '<span class="oculto"><input id="nombre_usuario" type="text" value="' + ui.item.nombre +'" /><a class="grd_info" href="#">Ok</a> <a href="#" class="cancel">Cancelar</a></span><br/>' +
-                     '<strong>Apellidos: </strong><span>' + ui.item.apellido + ' <a class="editar btn btn-mini" href="#">Editar</a></span>' +
-                     '<span class="oculto"><input id="apellido_usuario" type="text" value="' + ui.item.apellido +'" /><a class="grd_info" href="#">Ok</a> <a href="#" class="cancel">Cancelar</a></span><br/>' +
-                     '<strong>Empresa: </strong><span>' + ui.item.empresa + ' <a class="editar btn btn-mini" href="#">Editar</a></span>' +
-                     '<span class="oculto"><input id="apellido_usuario" type="text" value="' + ui.item.empresa +'" /><a class="grd_info" href="#">Ok</a> <a href="#" class="cancel">Cancelar</a></span><br/>' +
-                     '<strong>Correo: </strong><span>' + ui.item.correo + ' <a class="editar btn btn-mini" hr ef="#">Editar</a></span>' +
-                     '<span class="oculto"><input id="descripcion"  type="text" value="' + ui.item.correo +'" /><a class="grd_info" href="#">Ok</a> <a href="#" class="cancel">Cancelar</a></span>'+
+                     '<h4 class="text-info">Información</h4>' +
+                     '<input type="hidden" id="id_cliente" value="' + ui.item.id + '" />' +
+                     '<strong>Documento: </strong><span>' + ui.item.documento + '</span><br/>' +
+                     '<strong>Nombre: </strong><span>' + ui.item.nombre + ' <a class="editar btn btn-mini">Editar</a></span>' +
+                     '<span class="oculto"><input id="nombre_cliente" type="text" value="' + ui.item.nombre +'" />  <a style="margin-top: -10px" class="grd_info btn btn-success"> <i class="icon-ok icon-white"></i>  </a> <a style="margin-top: -10px" class="cancel btn btn-danger"> <i class="icon-remove icon-white"></i></a></span><br/>' +
+                     '<strong>Apellidos: </strong><span>' + ui.item.apellido + ' <a class="editar btn btn-mini">Editar</a></span>' +
+                     '<span class="oculto"><input id="apellido_cliente" type="text" value="' + ui.item.apellido +'" />  <a style="margin-top: -10px" class="grd_info btn btn-success"> <i class="icon-ok icon-white"></i>  </a> <a style="margin-top: -10px" class="cancel btn btn-danger"> <i class="icon-remove icon-white"></i></a></span><br/>' +
+                     '<strong>Empresa: </strong><span>' + ui.item.empresa + ' <a class="editar btn btn-mini">Editar</a></span>' +
+                     '<span class="oculto"><input id="empresa_cliente" type="text" value="' + ui.item.empresa +'" />  <a style="margin-top: -10px" class="grd_info btn btn-success"> <i class="icon-ok icon-white"></i>  </a> <a style="margin-top: -10px" class="cancel btn btn-danger"> <i class="icon-remove icon-white"></i></a></span><br/>' +
+                     '<strong>Correo: </strong><span>' + ui.item.correo + ' <a class="editar btn btn-mini">Editar</a></span>' +
+                     '<span class="oculto"><input id="correo_cliente"  type="email" value="' + ui.item.correo +'" />  <a style="margin-top: -10px" class="grd_info btn btn-success"> <i class="icon-ok icon-white"></i>  </a> <a style="margin-top: -10px" class="cancel btn btn-danger"> <i class="icon-remove icon-white"></i></a></span><br/>' +
+                     '<strong>Direccion: </strong><span>' + ui.item.direccion + ' <a class="editar btn btn-mini">Editar</a></span>' +
+                     '<span class="oculto"><input id="direccion_cliente"  type="text" value="' + ui.item.direccion +'" />  <a style="margin-top: -10px" class="grd_info btn btn-success"> <i class="icon-ok icon-white"></i>  </a> <a style="margin-top: -10px" class="cancel btn btn-danger"> <i class="icon-remove icon-white"></i></a></span><br/>' +
                      '<script src="librerias/js/funciones_cliente.js"></script>'
                  );
           });
           $('#resultados').slideDown('fast');
        }  
     });
-    
-//    $('.editar').click(function(){
-//       alert('me dieron click'); 
-//    });
-    
-    
-    /**
-     * Funcion que permite la edición de un campo seleccionado
-     */
-//    $('.editar').on('click', function(){
-//        alert('Aqui toy');
-//        $(this).closest('span').fadeOut('fast', function(){
-//            $(this).closest('span').next('span').fadeIn('fast');
-//        });
-//        return false;
-//     });
+
      
-     /**
-      * Función para volver al estado original del dato al cancelar su edición
-      */
-//    $('.cancel').on('click', function(){
-//        $(this).closest('span').fadeOut('fast', function(){
-//            $(this).closest('span').prev('span').fadeIn('fast');
-//        });
-//        return false;
-//    });
-    
-    
     /**
      * Funcion para la aparicion del formulario de creacion de un cliente
      */
@@ -73,13 +50,4 @@ $(document).ready(function()
         });
         return false;
    });
-   
-   /**
-    * Funcion al presionar el boton de cancelar la creacion de un cliente
-    */
-   $('#btnCancelarCliente').click(function(){
-       $('#resultados').fadeOut();
-       $('#resultados').html('');
-       $('#busqCliente').fadeIn();
-   })	
 });

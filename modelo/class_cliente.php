@@ -14,6 +14,9 @@ class class_cliente extends Conexion_Mysql {
     private $empresa="";
     private $correo="";
     private $direccion="";
+    private $rol="";
+    
+    var $mensajeu="";
 
     public function __construct(){
         $this->data_base = "construpresu";
@@ -52,6 +55,7 @@ class class_cliente extends Conexion_Mysql {
             $_SESSION["nombre"] = $this->nombre;
             $_SESSION["apellido"] = $this->apellido;
             $_SESSION["idUsuario"] = $this->id_cliente;
+            $_SESSION["idRol"] = $this->rol;
 			
             echo '{"status":1, "redirectURL":"'.$redirectURL.'"}';
             exit;
@@ -63,7 +67,7 @@ class class_cliente extends Conexion_Mysql {
 
     /************* METODOS ABSTRACTOS ******************/
     
-    public function leer($nombreUsuario) {
+    public function buscar($nombreUsuario) {
         $conex = conecta_base_datos();
         
         $datosArray = array();
@@ -77,10 +81,12 @@ class class_cliente extends Conexion_Mysql {
             while ($datos = mysql_fetch_array($query))
             {
                 $datosArray[] = array("value" => $datos['nombre'].' '.$datos['apellido'],
+                                 "documento" => $datos['documento'],
                                  "nombre" => $datos['nombre'],
                                  "apellido" => $datos['apellido'],
                                  "empresa" => $datos['empresa'],
                                  "correo" => $datos['correo'],
+                                 "direccion" => $datos['direccion'],
                                  "id" => $datos['id_cliente']);
             
                 $i++;
@@ -95,15 +101,100 @@ class class_cliente extends Conexion_Mysql {
         mysql_close($conex);
     }
     
-    public function crear() {
-        
+    /**
+     * 
+     */
+    public function leer($documento = ''){
+        if($documento != '') 
+	{	
+            $this->query = "SELECT * FROM cliente WHERE documento = '$documento'";
+            $this->realizarConsultaMultiple();
+        }
+
+        if(count($this->rows) == 1) {
+            foreach ($this->rows[0] as $propiedad=>$valor) {
+                $this->$propiedad = $valor;
+            }
+            $this->mensaje = 'Cliente encontrado';
+        } else {
+            $this->mensaje = 'Cliente no encontrado';
+        }
     }
     
-    public function actualizar() {
+    /**
+     * 
+     * @param type $cliente_data
+     */
+    public function crear($cliente_data=array()) {
+        if(array_key_exists('documento', $cliente_data)) {
+            $this->leer($cliente_data['documento']);
+            if($cliente_data['documento'] != $this->documento) {
+                foreach ($cliente_data as $campo=>$valor) {
+                    $$campo = $valor;
+                }
+                $this->query = "
+                        INSERT INTO cliente
+                        (nombre, apellido, documento, empresa, correo, direccion, id_rol)
+                         VALUES
+                        ('$nombre', '$apellido', '$documento', '$empresa', '$correo', '$direccion', '$rol')
+                ";
+                $this->realizarConsultaSencilla();
+                echo $this->mensajeu = '{"status":1,"mensaje":"Cliente agregado exitosamente"}';
+                
+            } else {
+                echo $this->mensajeu = '{"status":0,"mensaje":"El Cliente ya existe"}';
+            }
+        } else {
+            echo $this->mensajeu = '{"status":0,"mensaje":"No se ha agregado al Cliente"}';
+        }
+    }
+    
+    /**
+     * 
+     * @param type $cliente_data
+     * @param type $id_cliente
+     */
+    public function actualizar($cliente_data=array(), $id_cliente) 
+    {
+        if(isset($cliente_data['nombre_cliente']))
+        {
+            $this->query = "UPDATE cliente SET nombre='" . $cliente_data['nombre_cliente'] . "'
+                   WHERE id_cliente = '" . $id_cliente . "'";
+        } 
+	elseif (isset($cliente_data['apellido_cliente']))
+        {
+            $this->query = "UPDATE cliente SET apellido = '" . $cliente_data['apellido_cliente'] . "'
+                    WHERE id_cliente = '" . $id_cliente . "'";
+        }
+	elseif (isset($cliente_data['empresa_cliente']))
+        {
+            $this->query = "UPDATE cliente SET empresa = '" . $cliente_data['empresa_cliente'] . "'
+                    WHERE id_cliente = '" . $id_cliente . "'";
+        }
+        elseif (isset($cliente_data['correo_cliente']))
+        {
+            $this->query = "UPDATE cliente SET correo = '" . $cliente_data['correo_cliente'] . "'
+                    WHERE id_cliente = '" . $id_cliente . "'";
+        }
+        elseif (isset($cliente_data['direccion_cliente']))
+        {
+            $this->query = "UPDATE cliente SET direccion = '" . $cliente_data['direccion_cliente'] . "'
+                    WHERE id_cliente = '" . $id_cliente . "'";
+        }
         
+        if($this->realizarConsultaSencilla())
+        {
+            echo $this->mensajeu = '{"status":1,"mensaje":"Se han realizado los cambios!!"}';
+        }else{
+            echo $this->mensajeu = '{"status":0,"mensaje":"Error al realizar los cambios!!"}';
+        }
     }
 
-    public function eliminar() {
+    /**
+     * 
+     * @param type $id_cliente
+     */
+    public function eliminar($id_cliente) {
         
     }
 }

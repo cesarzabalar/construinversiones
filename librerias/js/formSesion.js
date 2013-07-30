@@ -11,7 +11,6 @@ $(document).ready(function(){
                     data: datos,
                     
                     success: function(data){
-	  			
 			//$('section').fadeIn();
 				
                         if(!data.status)

@@ -1,35 +1,57 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of class_roles
- *
- * @author Jorge Ivan
+ * Clase encargada de realizar las operaciones necesarias para la creacion,
+ * actualizacion y consulta de un cliente
  */
-class class_roles {
-    var $ide_rol = "";
-    var $nombre_rol="";
-    //put your code here
+include_once("Conexion_Mysql.php");
+include_once("funciones-comunes.php");
 
-    public function __construct() {
-        
-    }
-    public function getIde_rol(){
-        return $this->ide_rol;
+class class_roles extends Conexion_Mysql 
+{
+    var $id_rol = "";
+    var $nombre_rol = "";
+    
+    var $mensajeu="";
+
+    public function __construct(){
+        $this->data_base = "construpresu";
     }
     
-    public function setIde_rol($Ide_rol){
-        $this->ide_rol = $Ide_rol;
+    public function __destruct() {
+        unset($this);
     }
-    public function getNombre_rol(){
-        return $this->nombre_rol;
+    
+    
+    protected function actualizar($data, $id) {
+        
     }
-    public function setNombre_rol($Nombre_rol){
-        $this->nombre_rol = $Nombre_rol;
+
+    protected function crear() {
+        
+    }
+
+    protected function eliminar($id) {
+        
+    }
+    
+    /**
+     * 
+     */
+    public function leer() 
+    {
+        $data_roles = array();
+        $datos;
+        
+        $this->query = "SELECT * FROM roles";
+        $this->realizarConsultaMultiple();
+
+        if(count($this->rows) > 0) {
+            $data_roles = $this->rows;
+            return $data_roles;
+        } else {
+            echo $this->mensajeu = '{"status":1,"mensaje":"No existen Roles"}';
+        }
     }
 }
 

@@ -62,6 +62,13 @@ abstract class Conexion_Mysql {
     protected $flag = false;
     
     /**
+     *
+     * @var type 
+     */
+    var $mensaje = "";
+
+
+    /**
      * Permite personalizar un mensaje de error al realizar la conexion
      * @var type 
      */
@@ -92,12 +99,13 @@ abstract class Conexion_Mysql {
      * Metodo que permite la realizacion de una consulta SQL
      */
     protected function realizarConsultaSencilla(){
-        if($_POST) {
+        if($_GET) {
             $this->conectar();
             $this->conexion->query($this->query);
             $this->cerrar_conexion();
+            return true;
         } else {
-	    $this->mensaje = 'Metodo no permitido';
+            return false;
 	}
     }
     
@@ -115,9 +123,9 @@ abstract class Conexion_Mysql {
     
     
     # Metodos abstractos para presupuesto de clases que hereden    
-    abstract protected function leer($nombreUsuario);
+    abstract protected function leer();
     abstract protected function crear();
-    abstract protected function actualizar();
-    abstract protected function eliminar();
+    abstract protected function actualizar($data, $id);
+    abstract protected function eliminar($id);
 }
 ?>
